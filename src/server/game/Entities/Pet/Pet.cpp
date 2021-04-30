@@ -207,7 +207,7 @@ bool Pet::LoadPetFromDB(Player* owner, uint8 asynchLoadType, uint32 petentry, ui
     {
         WorldSession* mySess = owner->GetSession();
         mySess->GetQueryProcessor().AddCallback(CharacterDatabase.AsyncQuery(stmt)
-            .WithPreparedCallback([mySess, &asynchLoadType, info, owner](PreparedQueryResult result)
+            .WithPreparedCallback([mySess, asynchLoadType, info, owner](PreparedQueryResult result)
         {
             // process only if player is in world (teleport crashes?)
             // otherwise wait with result till he logs in
